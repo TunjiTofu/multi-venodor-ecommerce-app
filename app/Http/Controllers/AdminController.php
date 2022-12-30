@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -24,7 +25,7 @@ class AdminController extends Controller
 
     }
 
-    public function storeProfile(Request $request) 
+    public function storeProfile(Request $request)
     {
         // dd($request);
         $id = Auth::user()->id;
@@ -57,7 +58,24 @@ class AdminController extends Controller
 
     public function updatePassword(Request $request)
     {
-        dd($request);
+        // dd($request);
+        $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required',
+            'confirm_password' => 'required|same:new_password',
+        ]);
+        $hashedPassword = Auth::user()->password;
+        if(Hash::check($request->old_password,$hashedPassword)){
+            $users = User::find(Auth::id());
+            $users->password = bcrypt($request->new_password);
+            $users->save();
+
+            session()->flash('message', 'Password Updated Successfully');
+            return redirect()->back();
+        }else{
+            session()->flash('message', 'Old Password Does Not Match');
+            return redirect()->back();
+        }
     }
 
     public function destroy(Request $request)
