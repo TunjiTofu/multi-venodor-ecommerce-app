@@ -58,6 +58,7 @@ Route::controller(AboutController::class)->group(function () {
     Route::get('/delete/multi/image/{id}', 'deleteMultiImage')->name('delete.multi.image');
 });
 
+//Portfolio Container
 Route::controller(PortfolioController::class)->group(function () {
     Route::get('/all/portfolio', 'allPortfolio')->name('all.portfolio');
     Route::get('/add/portfolio', 'addPortfolio')->name('add.portfolio');
