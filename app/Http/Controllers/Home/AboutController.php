@@ -99,4 +99,59 @@ class AboutController extends Controller
 
         return redirect()->back()->with($notification);
     }
+
+    public function allMultiImage()
+    {
+        $allMultiImage = MultiImage::all();
+        return view('admin.about_page.all_multi_image', compact('allMultiImage'));
+    }
+
+    public function editMultiImage($id)
+    {
+        $multiImage = MultiImage::findOrFail($id);
+        return view('admin.about_page.edit_multi_image', compact('multiImage'));
+    }
+
+    public function updateMultiImage(Request $request)
+    {
+        $multiImageId = $request->id;
+
+        if ($request->file('multi_image')) {
+            $image = $request->file('multi_image');
+            $newImageName = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+
+            //resize with laravel image intervention
+            Image::make($image)->resize(220, 220)->save('upload/home_about/' . $newImageName);
+            $saveUrl = 'upload/home_about/' . $newImageName;
+
+            MultiImage::findOrFail($multiImageId)->update([
+                'multi_image' => $saveUrl,
+            ]);
+
+            //Toaster Notification
+            $notification = array(
+                'message' => 'Multi Image Updated Successfully',
+                'alert-type' => 'success',
+            );
+
+            return redirect()->route('all.multi.image')->with($notification);
+        }
+    }
+
+    public function deleteMultiImage($id)
+    {
+        $multi = MultiImage::findOrFail($id);
+        $image = $multi->multi_image;
+        unlink($image);
+
+        MultiImage::findOrFail($id)->delete();
+
+        //Toaster Notification
+        $notification = array(
+            'message' => 'Selected Image Deleted Successfully',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->back()->with($notification);
+    }
 }
