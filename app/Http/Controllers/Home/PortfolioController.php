@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
+use App\Models\MultiImage;
 use App\Models\Portfolio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -128,6 +129,7 @@ class PortfolioController extends Controller
     public function detailsPortfolio($id)
     {
         $portfolio = Portfolio::findOrFail($id);
-        return view('frontend.portfolio', compact('portfolio'));
+        $multiImages = MultiImage::all();
+        return view('frontend.portfolio', compact('portfolio','multiImages'));
     }
 }
