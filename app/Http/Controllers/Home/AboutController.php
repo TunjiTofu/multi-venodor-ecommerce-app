@@ -7,7 +7,7 @@ use App\Models\About;
 use App\Models\MultiImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
-use Image;
+use Intervention\Image\Facades\Image;
 
 class AboutController extends Controller
 {
@@ -50,7 +50,7 @@ class AboutController extends Controller
                 'short_title' => $request->short_title,
                 'short_description' => $request->short_description,
                 'long_description' => $request->long_description,
-                
+
             ]);
 
             //Toaster Notification
@@ -144,7 +144,7 @@ class AboutController extends Controller
         $image = $multi->multi_image;
         unlink($image);
 
-        MultiImage::findOrFail($id)->delete();
+        $multi->delete();
 
         //Toaster Notification
         $notification = array(
