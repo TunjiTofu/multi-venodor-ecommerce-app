@@ -136,10 +136,41 @@ class BlogController extends Controller
 
     public function detailsBlog($id)
     {
-        $recentBlogs = Blog::latest()->limit(5)->get();
-        $blog = Blog::findOrFail($id);
-        $blogCategories = BlogCategory::orderBy('category', 'ASC')->get();
+        //Banner Multi Images
         $multiImages = MultiImage::all();
-        return view('frontend.blog', compact('blog','multiImages','recentBlogs','blogCategories'));
+
+        //right side bar
+        $recentBlogs = Blog::latest()->limit(5)->get();
+        $blogCategories = BlogCategory::orderBy('category', 'ASC')->get();
+        
+        $blog = Blog::findOrFail($id);
+        return view('frontend.blog', compact('blog', 'multiImages', 'recentBlogs', 'blogCategories'));
+    }
+
+    public function blogCategory($id)
+    {
+        //Banner Multi Images
+        $multiImages = MultiImage::all();
+
+        //right side bar
+        $recentBlogs = Blog::latest()->limit(5)->get();
+        $blogCategories = BlogCategory::orderBy('category', 'ASC')->get();
+        
+        $blogCategoryId = BlogCategory::findOrFail($id);
+        $blogPosts = Blog::where('blog_category_id', $id)->orderBy('id', 'DESC')->get();
+        return view('frontend.blog_category', compact('blogPosts', 'blogCategoryId', 'recentBlogs', 'blogCategories','multiImages'));
+    }
+
+    public function homeBlog()
+    {
+        //Banner Multi Images
+        $multiImages = MultiImage::all();
+
+        //right side bar
+        $recentBlogs = Blog::latest()->limit(5)->get();
+        $blogCategories = BlogCategory::orderBy('category', 'ASC')->get();
+
+        $blogs = Blog::latest()->get();
+        return view('frontend.blogs_all', compact('blogs','recentBlogs', 'blogCategories','multiImages'));
     }
 }

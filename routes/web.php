@@ -19,7 +19,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-require __DIR__.'/auth.php';
+
+require __DIR__ . '/auth.php';
 
 
 Route::get('/', function () {
@@ -73,7 +74,6 @@ Route::controller(PortfolioController::class)->group(function () {
     Route::post('/update/portfolio', 'updatePortfolio')->name('update.portfolio');
     Route::get('/delete/portfolio/{id}', 'deletePortfolio')->name('delete.portfolio');
     Route::get('/portfolio/details/{id}', 'detailsPortfolio')->name('portfolio.details');
-    
 });
 
 //Blog Category Route
@@ -95,6 +95,6 @@ Route::controller(BlogController::class)->group(function () {
     Route::post('/update/blog', 'updateBlog')->name('update.blog');
     Route::get('/delete/blog/{id}', 'deleteBlog')->name('delete.blog');
     Route::get('/blog/details/{id}', 'detailsBlog')->name('blog.details');
+    Route::get('/blog/category/{id}', 'blogCategory')->name('blog.category');
+    Route::get('/home/blog', 'homeBlog')->name('home.blog');
 });
-
- 
