@@ -38,14 +38,14 @@
                                     @foreach ($blogs as $blog)
                                         <tr>
                                             <td>{{ $i++ }}</td>
-                                            <td>{{ $blog->blog_category_id }}</td>
+                                            <td>{{ $blog->categoryName->category }}</td>
                                             <td>{{ $blog->blog_title }}</td>
                                             <td>{{ $blog->blog_tags }}</td>
                                             <td><img src="{{ asset($blog->blog_image) }}"
                                                     style="width: 60px; height: 60px"></td>
                                             <td>
-                                                <a href="{{ route('edit.portfolio', $blog->id) }}" class="btn btn-info sm" title="Edit Image"><i class="fas fa-edit"></i></a>
-                                                <a href="{{ route('delete.portfolio', $blog->id) }}" class="btn btn-danger sm" title="Delete Image" id="delete"><i class="fas fa-trash-alt"></i></a>
+                                                <a href="{{ route('edit.blog', $blog->id) }}" class="btn btn-info sm" title="Edit Image"><i class="fas fa-edit"></i></a>
+                                                <a href="{{ route('delete.blog', $blog->id) }}" class="btn btn-danger sm" title="Delete Image" id="delete"><i class="fas fa-trash-alt"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach

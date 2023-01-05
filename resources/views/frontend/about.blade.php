@@ -21,12 +21,9 @@
             </div>
             <div class="breadcrumb__wrap__icon">
                 <ul>
-                    <li><img src="assets/img/icons/breadcrumb_icon01.png" alt=""></li>
-                    <li><img src="assets/img/icons/breadcrumb_icon02.png" alt=""></li>
-                    <li><img src="assets/img/icons/breadcrumb_icon03.png" alt=""></li>
-                    <li><img src="assets/img/icons/breadcrumb_icon04.png" alt=""></li>
-                    <li><img src="assets/img/icons/breadcrumb_icon05.png" alt=""></li>
-                    <li><img src="assets/img/icons/breadcrumb_icon06.png" alt=""></li>
+                    @foreach ($multiImages as $image)
+                        <li><img src="{{ asset($image->multi_image) }}" alt=""></li>
+                    @endforeach
                 </ul>
             </div>
         </section>
@@ -55,7 +52,7 @@
                                     <p><span>{{ $aboutPage->short_title }}</span></p>
                                 </div>
                             </div>
-                            <p class="desc">{{ $aboutPage->short_description}}</p>
+                            <p class="desc">{{ $aboutPage->short_description }}</p>
                             <a href="about.html" class="btn">Download my resume</a>
                         </div>
                     </div>
@@ -99,7 +96,8 @@
                                                     <div class="progress">
                                                         <div class="progress-bar" role="progressbar" style="width: 70%;"
                                                             aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
-                                                            <span class="percentage">70%</span></div>
+                                                            <span class="percentage">70%</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -109,7 +107,8 @@
                                                     <div class="progress">
                                                         <div class="progress-bar" role="progressbar" style="width: 90%;"
                                                             aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
-                                                            <span class="percentage">90%</span></div>
+                                                            <span class="percentage">90%</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -119,7 +118,8 @@
                                                     <div class="progress">
                                                         <div class="progress-bar" role="progressbar" style="width: 50%;"
                                                             aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-                                                            <span class="percentage">50%</span></div>
+                                                            <span class="percentage">50%</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -129,7 +129,8 @@
                                                     <div class="progress">
                                                         <div class="progress-bar" role="progressbar" style="width: 65%;"
                                                             aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">
-                                                            <span class="percentage">65%</span></div>
+                                                            <span class="percentage">65%</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -139,7 +140,8 @@
                                                     <div class="progress">
                                                         <div class="progress-bar" role="progressbar" style="width: 80%;"
                                                             aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
-                                                            <span class="percentage">80%</span></div>
+                                                            <span class="percentage">80%</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -149,7 +151,8 @@
                                                     <div class="progress">
                                                         <div class="progress-bar" role="progressbar" style="width: 45%;"
                                                             aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">
-                                                            <span class="percentage">45%</span></div>
+                                                            <span class="percentage">45%</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -159,7 +162,8 @@
                                                     <div class="progress">
                                                         <div class="progress-bar" role="progressbar" style="width: 55%;"
                                                             aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">
-                                                            <span class="percentage">55%</span></div>
+                                                            <span class="percentage">55%</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -169,7 +173,8 @@
                                                     <div class="progress">
                                                         <div class="progress-bar" role="progressbar" style="width: 85%;"
                                                             aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
-                                                            <span class="percentage">85%</span></div>
+                                                            <span class="percentage">85%</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
