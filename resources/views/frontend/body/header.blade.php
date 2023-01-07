@@ -1,4 +1,3 @@
-
 <header>
     <div id="sticky-header" class="menu__area transparent-header">
         <div class="container custom-container">
@@ -8,8 +7,10 @@
                     <div class="menu__wrap">
                         <nav class="menu__nav">
                             <div class="logo">
-                                <a href="index.html" class="logo__black"><img src="{{ asset('frontend/assets/img/logo/logo_black.png') }}" alt=""></a>
-                                <a href="index.html" class="logo__white"><img src="{{ asset('frontend/assets/img/logo/logo_white.png') }}" alt=""></a>
+                                <a href="index.html" class="logo__black"><img
+                                        src="{{ asset('frontend/assets/img/logo/logo_black.png') }}" alt=""></a>
+                                <a href="index.html" class="logo__white"><img
+                                        src="{{ asset('frontend/assets/img/logo/logo_white.png') }}" alt=""></a>
                             </div>
                             <div class="navbar__wrap main__menu d-none d-xl-flex">
                                 <ul class="navigation">
@@ -24,11 +25,10 @@
                                     </li>
                                     <li class="menu-item-has-children"><a href="{{ route('home.blog') }}">Our Blog</a>
                                     </li>
-                                    <li><a href="contact.html">contact me</a></li>
                                 </ul>
                             </div>
                             <div class="header__btn d-none d-md-block">
-                                <a href="contact.html" class="btn">Contact me</a>
+                                <a href="{{ route('contact.me') }}" class="btn">Contact me</a>
                             </div>
                         </nav>
                     </div>
@@ -37,8 +37,10 @@
                         <nav class="menu__box">
                             <div class="close__btn"><i class="fal fa-times"></i></div>
                             <div class="nav-logo">
-                                <a href="index.html" class="logo__black"><img src="{{ asset('frontend/assets/img/logo/logo_black.png') }}" alt=""></a>
-                                <a href="index.html" class="logo__white"><img src="{{ asset('frontend/assets/img/logo/logo_white.png') }}" alt=""></a>
+                                <a href="index.html" class="logo__black"><img
+                                        src="{{ asset('frontend/assets/img/logo/logo_black.png') }}" alt=""></a>
+                                <a href="index.html" class="logo__white"><img
+                                        src="{{ asset('frontend/assets/img/logo/logo_white.png') }}" alt=""></a>
                             </div>
                             <div class="menu__outer">
                                 <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
