@@ -1,5 +1,9 @@
 @extends('frontend.main_master')
 @section('main')
+
+@section('title')
+    Home
+@endsection
     <!-- banner-area -->
     @include('frontend.home_all.banner')
     <!-- banner-area-end -->
