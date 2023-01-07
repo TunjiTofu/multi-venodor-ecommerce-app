@@ -4,6 +4,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Home\AboutController;
 use App\Http\Controllers\Home\BlogCategoryController;
 use App\Http\Controllers\Home\BlogController;
+use App\Http\Controllers\Home\ContactController;
+use App\Http\Controllers\Home\FooterController;
 use App\Http\Controllers\Home\HomeSliderController;
 use App\Http\Controllers\Home\PortfolioController;
 use App\Http\Controllers\ProfileController;
@@ -74,6 +76,8 @@ Route::controller(PortfolioController::class)->group(function () {
     Route::post('/update/portfolio', 'updatePortfolio')->name('update.portfolio');
     Route::get('/delete/portfolio/{id}', 'deletePortfolio')->name('delete.portfolio');
     Route::get('/portfolio/details/{id}', 'detailsPortfolio')->name('portfolio.details');
+    Route::get('/portfolio', 'homePortfolio')->name('home.portfolio');
+    
 });
 
 //Blog Category Route
@@ -97,4 +101,18 @@ Route::controller(BlogController::class)->group(function () {
     Route::get('/blog/details/{id}', 'detailsBlog')->name('blog.details');
     Route::get('/blog/category/{id}', 'blogCategory')->name('blog.category');
     Route::get('/home/blog', 'homeBlog')->name('home.blog');
+});
+
+//Footer Route
+Route::controller(FooterController::class)->group(function () {
+    Route::get('/footer/setup', 'footerSetup')->name('footer.setup');
+    Route::post('/update/footer', 'updateFooter')->name('update.footer');
+});
+
+//Contact Route
+Route::controller(ContactController::class)->group(function () {
+    Route::get('/contact', 'contact')->name('contact.me');
+    Route::post('/store/message', 'storeMessage')->name('store.message');
+    Route::get('/contact/message', 'contactMessage')->name('contact.message');
+    Route::get('/delete/message/{id}', 'deleteMessage')->name('delete.message');
 });
