@@ -1,3 +1,6 @@
+@php
+    $route = Route::current()->getName();
+@endphp
 <header>
     <div id="sticky-header" class="menu__area transparent-header">
         <div class="container custom-container">
@@ -7,27 +10,31 @@
                     <div class="menu__wrap">
                         <nav class="menu__nav">
                             <div class="logo">
-                                <a href="{{ url('/') }}" class="logo__black"><img
+                                <a href="{{ route('home') }}" class="logo__black"><img
                                         src="{{ asset('frontend/assets/img/logo/logo_black.png') }}" alt=""></a>
-                                <a href="{{ url('/') }}" class="logo__white"><img
+                                <a href="{{ route('home') }}" class="logo__white"><img
                                         src="{{ asset('frontend/assets/img/logo/logo_white.png') }}" alt=""></a>
                             </div>
                             <div class="navbar__wrap main__menu d-none d-xl-flex">
                                 <ul class="navigation">
-                                    <li class="active"><a href="{{ url('/') }}">Home</a></li>
-                                    <li><a href="{{ route('home.about') }}">About</a></li>
-                                    <li><a href="services-details.html">Services</a></li>
-                                    <li class="menu-item-has-children"><a
+                                    <li class="{{ $route == 'home' ? 'active' : '' }}"><a
+                                            href="{{ route('home') }}">Home</a></li>
+                                    <li class="{{ $route == 'home.about' ? 'active' : '' }}"><a
+                                            href="{{ route('home.about') }}">About</a></li>
+                                    <li><a href="#">Services</a></li>
+                                    <li class="{{ $route == 'home.portfolio' ? 'active' : '' }}"><a
                                             href="{{ route('home.portfolio') }}">Portfolio</a>
                                     </li>
-                                    <li class="menu-item-has-children"><a href="{{ route('home.blog') }}">Our Blog</a>
+                                    <li class="{{ $route == 'home.blog' ? 'active' : '' }}"><a
+                                            href="{{ route('home.blog') }}">Our Blog</a>
                                     </li>
-                                    <li><a href="{{ route('contact.me') }}">Contact Me</a></li>
+                                    <li class="{{ $route == 'contact.me' ? 'active' : '' }}"><a
+                                            href="{{ route('contact.me') }}">Contact Me</a></li>
                                 </ul>
                             </div>
-                            <div class="header__btn d-none d-md-block">
+                            {{-- <div class="header__btn d-none d-md-block">
                                 <a href="{{ route('contact.me') }}" class="btn">Contact me</a>
-                            </div>
+                            </div> --}}
                         </nav>
                     </div>
                     <!-- Mobile Menu  -->
@@ -36,9 +43,11 @@
                             <div class="close__btn"><i class="fal fa-times"></i></div>
                             <div class="nav-logo">
                                 <a href="index.html" class="logo__black"><img
-                                        src="{{ asset('frontend/assets/img/logo/logo_black.png') }}" alt=""></a>
+                                        src="{{ asset('frontend/assets/img/logo/logo_black.png') }}"
+                                        alt=""></a>
                                 <a href="index.html" class="logo__white"><img
-                                        src="{{ asset('frontend/assets/img/logo/logo_white.png') }}" alt=""></a>
+                                        src="{{ asset('frontend/assets/img/logo/logo_white.png') }}"
+                                        alt=""></a>
                             </div>
                             <div class="menu__outer">
                                 <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
