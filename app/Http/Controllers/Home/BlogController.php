@@ -18,7 +18,7 @@ class BlogController extends Controller
         return view('admin.blog.all_blog', compact('blogs'));
     }
 
-    public function addBlog()
+    public function addBlog() 
     {
         $blogCategories = BlogCategory::orderBy('category', 'ASC')->get();
         return view('admin.blog.add_blog', compact('blogCategories'));
@@ -170,7 +170,7 @@ class BlogController extends Controller
         $recentBlogs = Blog::latest()->limit(5)->get();
         $blogCategories = BlogCategory::orderBy('category', 'ASC')->get();
 
-        $blogs = Blog::latest()->get();
+        $blogs = Blog::latest()->paginate(2);
         return view('frontend.blogs_all', compact('blogs','recentBlogs', 'blogCategories','multiImages'));
     }
 }
