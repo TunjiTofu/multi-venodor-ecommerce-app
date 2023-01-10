@@ -1,5 +1,6 @@
 @extends('admin.admin_master')
 @section('admin')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <div class="page-content">
         <div class="container-fluid">
             <div class="row">
@@ -8,17 +9,18 @@
                         <div class="card-body">
 
                             <h4 class="card-title">Add Block Category</h4>
-                            <form action="{{ route('store.blog.category') }}" method="POST">
+                            <form action="{{ route('store.blog.category') }}" method="POST" id="myForm">
                                 @csrf
 
                                 <div class="row mb-3">
                                     <label for="example-text-input" class="col-sm-2 col-form-label">Category</label>
-                                    <div class="col-sm-10">
+                                    <div class="col-sm-10 form-group">
                                         <input class="form-control" type="text" placeholder="Add Blog Category"
                                             id="category" name="category">
-                                        @error('category')
+                                        {{-- Laravel Validation Display --}}
+                                        {{-- @error('category')
                                             <span class="text-danger">{{ $message }}</span>
-                                        @enderror
+                                        @enderror --}}
                                     </div>
                                 </div>
                                 <!-- end row -->
@@ -32,4 +34,38 @@
                 </div>
             </div>
         </div>
+
+
+        {{-- Validation Script --}}
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#myForm').validate({
+                    rules: {
+                        category: {
+                            required: true,
+                        },
+                        // ---for other fields add accordingly
+                        // categoryTitle:{
+                        //     required: true,
+                        // },
+                    },
+                    messages: {
+                        category: {
+                            required: 'Please Enter Blog Category',
+                        },
+                    },
+                    errorElement: 'span',
+                    errorPlacement: function(error, element) {
+                        error.addClass('invalid-feedback');
+                        element.closest('.form-group').append(error);
+                    },
+                    highlight: function(element, errorClass, validClass) {
+                        $(element).addClass('is-invalid');
+                    },
+                    unhighlight: function(element, errorClass, validClass) {
+                        $(element).removeClass('is-invalid');
+                    },
+                })
+            })
+        </script>
     @endsection

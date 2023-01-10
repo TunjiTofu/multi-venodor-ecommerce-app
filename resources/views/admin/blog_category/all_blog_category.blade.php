@@ -29,12 +29,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @php
-                                        $i = 1;
-                                    @endphp
-                                    @foreach ($blogCategory as $blogCat)
+                                    @foreach ($blogCategory as $key => $blogCat)
                                         <tr>
-                                            <td>{{ $i++ }}</td>
+                                            <td>{{ $key + 1 }}</td>
                                             <td>{{ $blogCat->category }}</td>
                                             <td>
                                                 <a href="{{ route('edit.blog.category', $blogCat->id) }}"
